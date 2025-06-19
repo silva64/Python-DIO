@@ -18,7 +18,16 @@ while True:
     opcao = input(menu)
 
     if opcao == "d":
-        valor = float(input("Informe o valor do depósito: "))
+        valor_str = input("Informe o valor do depósito: ")
+        # Verifica se o valor_str não está vazio
+        if not valor_str:
+            print("Operação falhou! Você não pode informar um valor em branco.")
+            continue # Volta para o início do loop
+        try:
+            valor = float(valor_str)
+        except ValueError:
+            print("Operação falhou! Valor inválido. Por favor, digite um número.")
+            continue # Volta para o início do loop
 
         if valor > 0:
             saldo += valor
@@ -28,7 +37,16 @@ while True:
             print("Operação falhou! O valor informado é inválido.")
 
     elif opcao == "s":
-        valor = float(input("Informe o valor do saque: "))
+        valor_str = input("Informe o valor do saque: ")
+        # Verifica se o valor_str não está vazio
+        if not valor_str:
+            print("Operação falhou! Você não pode informar um valor em branco.")
+            continue # Volta para o início do loop
+        try:
+            valor = float(valor_str)
+        except ValueError:
+            print("Operação falhou! Valor inválido. Por favor, digite um número.")
+            continue # Volta para o início do loop
 
         excedeu_saldo = valor > saldo
 
@@ -64,4 +82,4 @@ while True:
 
     else:
         print("Operação inválida, por favor selecione novamente a operação desejada.")
-     
+        
